@@ -14,6 +14,11 @@ void setup() {
 }
 
 void draw() {
+  int black_bright_threshold = 4;
+  int black_saturate_threshold = 4;  
+  int color_threshold = 200;
+  //change three params above
+  
   // Capture and display the video
   if (video.available()) {
     video.read();
@@ -37,13 +42,14 @@ void draw() {
       float b2 = brightness(backColor);
       float s1 = saturation(currentColor);
       float s2 = saturation(backColor);
-      if(b1< && b2<3 && s1<3 && s2<3) continue;
+      if(b1<black_bright_threshold && b2<black_bright_threshold
+      && s1<black_saturate_threshold && s2<black_saturate_threshold) continue;
       
       
       float h1 = hue(currentColor);
       float h2 = hue(backColor);
       float d = s1*s1 + s2*s2-2*s1*s2*cos(radians(abs(h1-h2)));
-      if(d>100){
+      if(d>color_threshold){
         img.set(x,y,currentColor);
       }
       // Using euclidean distance to compare colors
