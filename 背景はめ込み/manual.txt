@@ -1,0 +1,11 @@
+カメラの調整はまず第一で。
+色補正等々はなくすこと。
+
+調整するパラメーターは３つ
+color_threshold: 黒以外に対して、どれくらいの距離で「違う色」と判定するか
+black_bright_threshold brightがいくつ以下で黒か。
+black_saturate_threshold;　saturateがいくつ以下で黒か。  
+黒系のパラメーターはアンド条件で、
+「bright < black_bright_threshold　かつ　saturate < black_saturate_thresholdなら黒」
+と判定されます。
+

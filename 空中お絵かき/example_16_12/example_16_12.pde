@@ -1,9 +1,3 @@
-// Learning Processing
-// Daniel Shiffman
-// http://www.learningprocessing.com
-
-// Example 16-11: Simple color tracking
-
 import processing.video.*;
 
 // Variable for capture device
@@ -37,8 +31,12 @@ void setup() {
 }
 
 void track_color(){
-  float worldRecord = 50;
-  float d2_worldRecord =  50;
+  float worldRecord = 50; 
+  //the threshold for "same color"
+  //smaller worldRecord means more accurate tracking,
+  //but less robust to noise.
+  
+  float d2_worldRecord =  50;//do not change it
   int count = 0;
   old_closest_X = closest_X;
   old_closest_Y = closest_Y;
