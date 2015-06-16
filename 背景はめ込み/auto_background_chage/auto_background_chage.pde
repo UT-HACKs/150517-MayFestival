@@ -3,14 +3,15 @@ PImage background;
 // Variable for capture device
 Capture video;
 
+
 // A variable for the color we are searching for.
 void setup() {
-  size(640,360);
   String[] cameras = Capture.list();
+  for(int i=0;i<cameras;i++){println(cameras[i]);}
   video = new Capture(this,640,360,15);
   video.start();
+  size(video.width,video.height);
   colorMode(HSB,360,100,100);
-  // Start off tracking for green
 }
 
 void draw() {
