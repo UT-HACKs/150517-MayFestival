@@ -12,6 +12,9 @@ int old_closest_X = -1;
 int old_closest_Y = -1;
 int closest_X = -1;
 int closest_Y = -1;
+int w_ratio;
+int h_ratio;
+  
 PGraphics g;
 
 void setup() {
@@ -24,10 +27,12 @@ void setup() {
   trackColor_h = -1;
   trackColor_b = -1;
   colorMode(HSB,360,100,100);
-  g = createGraphics(1280,720);
+  g = createGraphics(width,height);
   g.beginDraw();
   g.colorMode(HSB,360,100,100);
   g.endDraw();
+  w_ratio = width/video.width;
+  h_ratio = height/video.height;
 }
 
 void track_color(){
@@ -85,22 +90,22 @@ void draw() {
   if(trackColor_h>0) track_color();
   if(closest_X>0 && old_closest_X>0){
     g.beginDraw();
-    g.stroke(0,100,100);
+    g.stroke(trackColor_h,100,100);
     g.strokeWeight(10);
-    g.line(old_closest_X*2,old_closest_Y*2,closest_X*2,closest_Y*2);
+    g.line(old_closest_X*w_ratio,old_closest_Y*h_ratio,closest_X*w_ratio,closest_Y*h_ratio);
     g.endDraw();
   }
   pushMatrix();
   scale(-1,1);
-  image(video,-video.width*2,0,1280,720);
-  image(g,-video.width*2,0);
+  image(video,-width,0,width,height);
+  image(g,-width,0);
   popMatrix();
   
 }
 
 void mousePressed() {
   // Save color where the mouse is clicked in trackColor variable
-  int loc = -mouseX/2 + mouseY/2*video.width;
+  int loc = -mouseX/w_ratio + mouseY/h_ratio*video.width;
   trackColor = video.pixels[loc];
   trackColor_h = hue(trackColor);
   trackColor_s = saturation(trackColor);
