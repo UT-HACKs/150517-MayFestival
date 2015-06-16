@@ -20,7 +20,7 @@ PGraphics g;
 void setup() {
   size(1280,720);
   String[] cameras = Capture.list();
-  for(int i=0;i<cameras;i++){println(cameras[i]);}
+  for(int i=0;i<cameras.lenth;i++){println(cameras[i]);}
   video = new Capture(this,640,360,15);
   video.start();
   // Start off tracking for green
