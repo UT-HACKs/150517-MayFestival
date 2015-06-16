@@ -7,11 +7,7 @@ Capture video;
 // A variable for the color we are searching for.
 void setup() {
   String[] cameras = Capture.list();
-<<<<<<< HEAD
   for(int i=0;i<cameras.length;i++){println(cameras[i]);}
-=======
-  for(int i=0;i<cameras;i++){println(cameras[i]);}
->>>>>>> e9f783b96ede18e43fe2ff5196eeb2ba534fdb83
   video = new Capture(this,640,360,15);
   video.start();
   size(video.width,video.height);
